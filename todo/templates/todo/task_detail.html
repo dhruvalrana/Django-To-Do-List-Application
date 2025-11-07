@@ -1,0 +1,43 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}{{ task.title }} - To-Do List{% endblock %}
+
+{% block content %}
+<h1>Task Details</h1>
+
+<div style="background: #f8f9fa; padding: 25px; border-radius: 5px; margin-top: 30px;">
+    <div style="margin-bottom: 20px;">
+        <h2 style="color: #333; margin-bottom: 10px;">{{ task.title }}</h2>
+        <p style="margin-bottom: 5px;">
+            <strong>Status:</strong>
+            {% if task.completed %}
+                <span style="color: #28a745; font-weight: bold;">✓ Completed</span>
+            {% else %}
+                <span style="color: #ffc107; font-weight: bold;">⏳ Pending</span>
+            {% endif %}
+        </p>
+    </div>
+    
+    <div style="margin-bottom: 20px;">
+        <strong>Description:</strong>
+        <p style="margin-top: 10px; line-height: 1.6;">
+            {% if task.description %}
+                {{ task.description|linebreaks }}
+            {% else %}
+                <em style="color: #6c757d;">No description provided</em>
+            {% endif %}
+        </p>
+    </div>
+    
+    <div style="margin-bottom: 20px;">
+        <strong>Created:</strong>
+        <p style="margin-top: 5px;">{{ task.created_at|date:"d M Y, h:i A" }}</p>
+    </div>
+    
+    <div style="margin-top: 30px;">
+        <a href="{% url 'task-update' task.pk %}" class="btn btn-secondary" style="margin-right: 10px;">Edit Task</a>
+        <a href="{% url 'task-delete' task.pk %}" class="btn btn-danger" style="margin-right: 10px;">Delete Task</a>
+        <a href="{% url 'task-list' %}" class="btn">Back to List</a>
+    </div>
+</div>
+{% endblock %}

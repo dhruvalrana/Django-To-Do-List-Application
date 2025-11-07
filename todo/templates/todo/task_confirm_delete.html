@@ -1,0 +1,25 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}Delete Task - To-Do List{% endblock %}
+
+{% block content %}
+<h1>Delete Task</h1>
+
+<div style="background: #fff3cd; border: 1px solid #ffc107; padding: 25px; border-radius: 5px; margin-top: 30px;">
+    <h2 style="color: #856404; margin-bottom: 20px;">⚠️ Are you sure?</h2>
+    
+    <p style="font-size: 18px; margin-bottom: 20px;">
+        Do you really want to delete the task: <strong>"{{ task.title }}"</strong>?
+    </p>
+    
+    <p style="color: #856404; margin-bottom: 30px;">
+        This action cannot be undone.
+    </p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Delete Task</button>
+        <a href="{% url 'task-detail' task.pk %}" class="btn btn-secondary" style="margin-left: 10px;">Cancel</a>
+    </form>
+</div>
+{% endblock %}

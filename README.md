@@ -220,9 +220,7 @@ Possible improvements for this application:
 ## Author
 
 **Dhruval Rana**  
-BIA Semester 3 - Internal Assignment 12  
-Exploratory Data Analysis (EDA)
-
 ## License
 
 This is an educational project created for learning purposes.
+
